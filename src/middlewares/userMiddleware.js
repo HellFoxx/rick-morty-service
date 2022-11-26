@@ -23,7 +23,6 @@ const signUpMiddleware = async (req, res, next) => {
 
 const signInMiddleware = async (req, res, next) => {
     const { email, password } = req.body;
-    const { PUBLIC_KEY } = process.env;
 
     if (!(email && password)) {
         return res.status(400).json('All fields is required')
@@ -33,13 +32,9 @@ const signInMiddleware = async (req, res, next) => {
 
     if (!(user && (await bcrypt.compare(password, user.password)))) {
         return res.status(400).json('Invalid Credentials')
-        // const token = jwt.sign(
-        //     { userId: user._id, email: user.email },
-        //     PUBLIC_KEY,
-        //     { expiresIn: '2h' }
-        // );
     }
 
+    return next();
 }
 
 module.exports = { signInMiddleware, signUpMiddleware };
