@@ -3,7 +3,9 @@ const router = Router();
 const { 
     userSignUp,
     userSignIn,
-    userWelcome
+    userWelcome,
+    isUserAlreadyExists,
+    updateUser,
 } = require('../controllers/userController');
 const {
     signUpMiddleware,
@@ -16,6 +18,9 @@ const {
 
 router.post('/signup', signUpMiddleware, userSignUp);
 router.post('/signin', signInMiddleware, userSignIn);
-router.get('/welcome', tokenVerifyMiddleware, userWelcome)
+router.get('/welcome', tokenVerifyMiddleware, userWelcome);
+router.get('/check', isUserAlreadyExists);
+router.put('/update', tokenVerifyMiddleware, updateUser); 
+router.get('/auth', tokenVerifyMiddleware, (req, res) => res.sendStatus(100))
 
 module.exports = router;

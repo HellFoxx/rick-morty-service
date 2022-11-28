@@ -30,8 +30,12 @@ const signInMiddleware = async (req, res, next) => {
 
     const user = await User.findOne({ email: email.toLowerCase() })
 
-    if (!(user && (await bcrypt.compare(password, user.password)))) {
-        return res.status(400).json('Invalid Credentials')
+    if (!user) {
+        return res.status(400).json('User with such email do not exist')
+    }
+
+    if (!(await bcrypt.compare(password, user.password))) {
+        return res.status(400).json('Wrong password')
     }
 
     return next();
