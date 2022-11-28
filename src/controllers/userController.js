@@ -45,7 +45,6 @@ const updateUser = async (req, res, next) => {
 module.exports = {
     userSignUp,
     userSignIn,
-    userWelcome,
     isUserAlreadyExists,
     updateUser,
 };
