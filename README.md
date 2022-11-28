@@ -6,7 +6,7 @@ Deploys MongoDB in docker
 
 ### `npm install`
 
-Installs necessary packager
+Installs necessary packages
 
 ### `npm start`
 
