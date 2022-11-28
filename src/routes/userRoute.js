@@ -18,7 +18,6 @@ const {
 
 router.post('/signup', signUpMiddleware, userSignUp);
 router.post('/signin', signInMiddleware, userSignIn);
-router.get('/welcome', tokenVerifyMiddleware, userWelcome);
 router.get('/check', isUserAlreadyExists);
 router.put('/update', tokenVerifyMiddleware, updateUser); 
 router.get('/auth', tokenVerifyMiddleware, (req, res) => res.sendStatus(100))

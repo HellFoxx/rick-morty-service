@@ -24,10 +24,6 @@ const userSignIn = async (req, res, next) => {
     }
 }
 
-const userWelcome = async (req, res, next) => {
-    res.status(200).json('Welcome!')
-}
-
 const isUserAlreadyExists = async (req, res, next) => {
     try {
         const result = await isUserAlreadyExistsService(req.query);    
@@ -44,10 +40,6 @@ const updateUser = async (req, res, next) => {
     } catch (e) {
         res.status(500).json(e);
     }
-}
-
-const userAuth = async (req, res, next) => {
-    res.sendStatus(100)
 }
 
 module.exports = {
